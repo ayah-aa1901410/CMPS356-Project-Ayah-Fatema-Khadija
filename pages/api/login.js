@@ -4,7 +4,7 @@ import fs from "fs"
 
 const KEY = "thisisarandomkeyimnotsurewhatitsusedfor"
 
-export default function func(req, res){
+export default async function func(req, res){
  try{
   if(req.method === "POST"){
   const {username, password} = req.body
