@@ -8,8 +8,6 @@ export default async function func(req, res){
  try{
 
   const {username, password} = req.body
-  console.log(username);
-  console.log(password);
   let role = null
   
   let usersLoginInfo = await fs.promises.readFile("data/Login.json")
