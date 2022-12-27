@@ -68,7 +68,10 @@ export default function AddStudent(props){
                 teacherId: teacherId,
                 password: password
             }
-            const response = await fetch("http://localhost:3000/api/StudentList",{method: "POST", body: JSON.stringify({
+            const response = await fetch("http://localhost:3000/api/StudentList",{method: "POST",headers : { 
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+               }, body: JSON.stringify({
                 newStudent
             })})
             store.setStudents()

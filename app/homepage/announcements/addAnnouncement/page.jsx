@@ -40,7 +40,10 @@ export default function AddAnnouncement(){
                     date: `${date.getMonth()+1}/${date.getDate()}/${date.getFullYear()}`,
             }
             // console.log(base64String);
-            const response = await fetch("http://localhost:3000/api/AnnouncementList",{method: "POST", body: JSON.stringify({
+            const response = await fetch("http://localhost:3000/api/AnnouncementList",,{method: "POST",headers : { 
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+               }, body: JSON.stringify({
                 newAnnouncement
             })})
 

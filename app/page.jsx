@@ -23,14 +23,17 @@ export default function Home() {
   async function submitForm() {
     const response = await fetch("/api/login", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers : { 
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+       },
       body: JSON.stringify({
         username,
         password,
       }),
-    }).then((t) => t.json());
+    })
+
+    .then((t) => t.json());
 
     const token = response.token;
 

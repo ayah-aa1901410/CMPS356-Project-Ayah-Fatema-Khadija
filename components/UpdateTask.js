@@ -68,9 +68,10 @@ const UpdateTask = ({ setOpen, task_id }) => {
     };
     const response = await fetch("/api/TaskList", {
       method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers : { 
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+       },
       body: JSON.stringify({
         taskData,
       }),

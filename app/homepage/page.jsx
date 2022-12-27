@@ -46,7 +46,9 @@ export default function Homepage() {
   const [sortedTasks, setSortedTasks] = useState([])
   const [localStorageResponse, setLocalStorageResponse] = useState(null)
   const router = useRouter()
-
+  let studentsOnly = []
+  store.students?.map(parent => 
+        parent.students.forEach(student=>studentsOnly.push(student)))
   const [role, setRole] = useState(null);
 
   const matchedMessages = GetParentMessages(store.loggedIn.obj.students)
@@ -192,6 +194,10 @@ export default function Homepage() {
                     <Typography variant="h7">
                       Date: {new Date(task.dueDate).toDateString()}
                     </Typography>
+                    <br />
+                    <Typography variant="h7">
+                      Student: {store.studentsOnly.find(stud => stud.studentId == task.studentId).firstName + " " + store.studentsOnly.find(stud => stud.studentId == task.studentId).lastName}
+                    </Typography>
                     {task.completedDate && <div><Typography variant="h7">
                       {task.masteryLevel}
                       <br />
@@ -236,6 +242,10 @@ export default function Homepage() {
                       <br />
                     </Typography>
                     <Typography variant="h7">{message.message}</Typography>
+                    <br />
+                    <Typography variant="h7">
+                      Student: {store.studentsOnly.find(stud => stud.studentId == message.studentId).firstName + " " + store.studentsOnly.find(stud => stud.studentId == message.studentId).lastName}
+                    </Typography>
                   </CardContent>
                 </Card> : ""
               ))}

@@ -52,9 +52,10 @@ const AddTask = ({ open, setOpen, studentId }) => {
     };
     const response = await fetch("/api/TaskList", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers : { 
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+       },
       body: JSON.stringify({
         taskData
       }),

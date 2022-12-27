@@ -39,7 +39,9 @@ export default function TasksScreen() {
   const [teacher, setTeacher] = useState(false);
   const [parent, setParent] = useState(false);
   const [dateFilter, setDateFilter] = useState({ start: new Date().setMonth(new Date().getMonth() - 1), end: new Date() })
-
+  let studentsOnly = []
+  store.students?.map(parent => 
+        parent.students.forEach(student=>studentsOnly.push(student)))
   const router = useRouter();
   useEffect(() => {
     if (store.loggedIn.obj != null) {
@@ -214,6 +216,10 @@ export default function TasksScreen() {
                       {task.comment}
                       <br />
                     </Typography></div>}
+                    <br />
+                    <Typography variant="h7">
+                      Student: {store.studentsOnly.find(stud => stud.studentId == task.studentId).firstName + " " + store.studentsOnly.find(stud => stud.studentId == task.studentId).lastName}
+                    </Typography>
                   </CardContent>
                   {teacher && (
                     <CardActions>
@@ -274,19 +280,15 @@ export default function TasksScreen() {
                   }}
                 >
                   <CardContent>
-                    <Typography variant="h7">
-                      Task {task.taskId}:
-                      <br />
-                    </Typography>
-                    <Typography variant="h7">
-                      Student Id: {task.studentId}
-                      <br />
-                    </Typography>
-                    <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+                  <Typography variant="h6" sx={{ fontWeight: "bold" }}>
                       {task.surahName}
                     </Typography>
                     <Typography variant="h7">
-                      {task.fromAya}
+                      From: {task.fromAya}
+                      <br />
+                    </Typography>
+                    <Typography variant="h7">
+                      To: {task.toAya}
                       <br />
                     </Typography>
                     <Typography variant="h7">
@@ -296,13 +298,17 @@ export default function TasksScreen() {
                     <Typography variant="h7">
                       Date: {new Date(task.dueDate).toDateString()}
                     </Typography>
-                    <Typography variant="h7">
+                    {task.completedDate && <div><Typography variant="h7">
                       {task.masteryLevel}
                       <br />
                     </Typography>
                     <Typography variant="h7">
                       {task.comment}
                       <br />
+                    </Typography></div>}
+                    <br />
+                    <Typography variant="h7">
+                      Student: {store.studentsOnly.find(stud => stud.studentId == task.studentId).firstName + " " + store.studentsOnly.find(stud => stud.studentId == task.studentId).lastName}
                     </Typography>
                   </CardContent>
                 </Card>

@@ -38,9 +38,10 @@ const AddMessage = ({ open, setOpen, studentId }) => {
     };
     const response = await fetch("/api/MessageList", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers : { 
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+       },
       body: JSON.stringify({
         messageData,
         studentId,

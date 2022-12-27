@@ -48,7 +48,10 @@ export default function UpdateAnnouncement(){
                     image: otherImage,
                     date: `${date.getMonth()+1}/${date.getDate()}/${date.getFullYear()}`,
             }
-            const response = await fetch("http://localhost:3000/api/AnnouncementList",{method: "PUT", body: JSON.stringify({
+            const response = await fetch("http://localhost:3000/api/AnnouncementList",{method: "PUT", headers : { 
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+               },body: JSON.stringify({
                 updAnnouncement
             })})
 

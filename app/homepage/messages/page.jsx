@@ -51,7 +51,9 @@ export default function MessagesScreen() {
   const [teacher, setTeacher] = useState(false);
   const [parent, setParent] = useState(false);
   const [dateFilter, setDateFilter] = useState({ start: new Date().setMonth(new Date().getMonth() - 1), end: new Date() })
-
+  let studentsOnly = []
+  store.students?.map(parent => 
+        parent.students.forEach(student=>studentsOnly.push(student)))
   const router = useRouter();
   useEffect(() => {
     if (store.loggedIn.obj != null) {
@@ -219,6 +221,9 @@ export default function MessagesScreen() {
                       <br />
                     </Typography>
                     <Typography variant="h7">{message.message}</Typography>
+                    <Typography variant="h7">
+                      Student: {store.studentsOnly.find(stud => stud.studentId == message.studentId).firstName + " " + store.studentsOnly.find(stud => stud.studentId == message.studentId).lastName}
+                    </Typography>
                   </CardContent>
                   {teacher && (
                     <CardActions>
@@ -289,20 +294,19 @@ export default function MessagesScreen() {
                         alignItems: "center",
                       }}
                     >
-                      <Typography variant="h6">
-                        Message Id: {message.id}
-                        <br />
-                      </Typography>
-                      <Typography variant="h6">
+                      <Typography variant="h7">
                         {new Date(message.postedAt).toDateString()}
                         <br />
                       </Typography>
                     </div>
-                    <Typography variant="h5">
+                    <Typography variant="h6">
                       Message Title: {message.title}
                       <br />
                     </Typography>
                     <Typography variant="h7">{message.message}</Typography>
+                    <Typography variant="h7">
+                      Student: {store.studentsOnly.find(stud => stud.studentId == message.studentId).firstName + " " + store.studentsOnly.find(stud => stud.studentId == message.studentId).lastName}
+                    </Typography>
                   </CardContent>
                 </Card>
               ))}

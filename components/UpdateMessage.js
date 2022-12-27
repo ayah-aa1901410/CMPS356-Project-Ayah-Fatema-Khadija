@@ -46,6 +46,10 @@ export default function UpdateMessage({setOpen, message_id}){
         };
         const response = await fetch("/api/MessageList", {
           method: "PUT",
+          headers : { 
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+           },
           body: JSON.stringify({
             messageData,
           }),
