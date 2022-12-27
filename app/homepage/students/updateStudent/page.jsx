@@ -103,7 +103,7 @@ export default function UpdateStudent(props){
                 isActive: isActive,
                 password: password
             }
-            const response = await fetch("http://localhost:3000/api/StudentList",
+            const response = await fetch("/api/StudentList",
             {method: "PUT",headers : { 
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
