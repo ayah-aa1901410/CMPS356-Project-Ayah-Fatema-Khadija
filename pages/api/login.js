@@ -6,7 +6,7 @@ const KEY = "thisisarandomkeyimnotsurewhatitsusedfor"
 
 export default async function func(req, res){
  try{
-
+  if(req.method === "POST"){
   const {username, password} = req.body
   let role = null
   
@@ -44,7 +44,7 @@ export default async function func(req, res){
   }
 
  
-
+  }
  }catch(e){
   console.log(e);
  }
