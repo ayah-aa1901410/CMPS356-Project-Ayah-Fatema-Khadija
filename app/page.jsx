@@ -10,7 +10,7 @@ import Form from "@mui/material";
 import {useStore} from "../store/HalaqatStore"
 import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 
-export default async function Home() {
+export default function Home() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [incorrect, setIncorrect] = useState(false)
